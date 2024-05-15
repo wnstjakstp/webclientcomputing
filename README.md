@@ -4,34 +4,34 @@
 깃 클론 이후
 터미널 창에서
 
-# 1. 가상 환경 생성 (예: venv라는 이름으로)
+ 1. 가상 환경 생성 (예: venv라는 이름으로)
 python -m venv venv
 
-# 2.가상 환경 활성화
-# Windows
+ 2.가상 환경 활성화
+ Windows
 venv\Scripts\activate
-# macOS/Linux
+ macOS/Linux
 source venv/bin/activate
 
-# 3.requirements.txt 파일 설치
+ 3.requirements.txt 파일 설치
 pip install -r requirements.txt
 
-# 4.모델 변경 사항 데이터 베이스 적용 
-# Windows
+ 4.모델 변경 사항 데이터 베이스 적용 
+ Windows
 python manage.py migrate
-# macOS/Linux
+ macOS/Linux
 맥북: python3 manage.py migrate
 
-# 5.manage.py가 있는 webproject/web 디렉토리로 이동
+ 5.manage.py가 있는 webproject/web 디렉토리로 이동
 cd web
 
-# 6. 서버 실행
-# Windows
+ 6. 서버 실행
+ Windows
 python manage.py runserver
-# macOS/Linux
+ macOS/Linux
 python3 manage.py runserver
 
-# 어드민 계정 접속 방법
+ 어드민 계정 접속 방법
 http://127.0.0.1:8000/admin/
 아이디 : junseo 
 비밀번호 : 1234
