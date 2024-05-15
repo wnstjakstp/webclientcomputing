@@ -1,0 +1,80 @@
+/* new_comment.css */
+
+body {
+
+    background-color: black;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* 폰트 스타일 조정 */
+
+}
+
+h1 {
+    font-size: 40px;
+    color: grey;
+    text-align: center;
+    margin-top: 80px;
+}
+
+form {
+    background-color: #f0f0f0;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    margin: 50px auto;
+}
+
+textarea, select, input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input[type="submit"] {
+    background-color: #03FF75;
+    color: white;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+input[type="submit"]:hover {
+    background-color: darkgreen;
+}
+
+a {
+    display: inline-block;
+    margin-top: 20px;
+    color: #007bff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.lec{
+    font-size:20px;
+    background-color: green; /* 배경색 */
+    color: white; /* 글자색 */
+    padding: 10px 20px; /* 패딩 */
+    border: none; /* 테두리 제거 */
+    border-radius: 5px; /* 모서리 둥글기 */
+    text-decoration: none; /* 링크 밑줄 제거 */
+    cursor: pointer; /* 마우스 오버시 커서 변경 */
+    margin-bottom: 20px;
+    margin-top: 30px;
+}
+
+.lec:hover {
+    background-color: darkgreen; /* 호버시 배경색 변경 */
+}
+
+
+
+hr {
+    border: none;
+    border-top: 2px solid white ; /* 변경하고자 하는 선 색상을 여기에 입력하세요 */
+
+}

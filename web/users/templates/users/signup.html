@@ -1,0 +1,48 @@
+
+
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원가입</title>
+    <link rel="stylesheet" href="{% static 'users/css/style.css' %}"> <!-- 외부 CSS 파일 링크 -->
+</head>
+<body>
+
+<h1>Link Co</h1>
+<div class="container">
+
+    <h2>회원가입</h2>
+
+
+    <form method="POST"  enctype="multipart/form-data">
+        {% csrf_token %} 
+        <label for="username">아이디</label><br>
+        <input name="username" type="text" id="username" class="form-input" required>
+        <br>
+        <label for="password1">비밀번호</label><br>
+        <input name="password1" type="password" id="password1" class="form-input" required>
+        <br>
+        <label for="password2">비밀번호 확인</label><br>
+        <input name="password2" type="password" id="password2" class="form-input" required>
+        
+        <br>
+        <label for="email">이메일:</label><br>
+        <input name="email" type="email" id="email" class="form-input" required>
+        <br>
+        <label for="nickname">닉네임:</label><br>
+        <input name="nickname" type="text" id="nickname" class="form-input">
+        <br>
+
+        <input type="submit" class="btn btn-primary" value="회원가입">
+        
+
+    </form>
+</div>
+<p>이미 회원이신가요? <a href="{% url 'login' %}">로그인하기</a></p>
+</body>
+</html>
+

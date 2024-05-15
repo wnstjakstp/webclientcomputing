@@ -1,0 +1,44 @@
+{% extends "main/base.html" %}
+{% load static %}
+{% block title %}
+수강중인 강의 
+{% endblock title %} 
+
+{% block extrahead %}
+<link rel="stylesheet" href="{% static 'main/css/mylecture.css' %}">
+{% endblock extrahead %} 
+
+{% block content %}
+<h2>나의 강의</h2>
+<hr>
+{% if user.is_authenticated %}
+    <h3> {{ user.profile.nickname }} 님의 수강중인 강의</h3> 
+    {% if user_lectures %}
+        <div class="lecture-container">
+            {% for user_lecture in user_lectures %}
+                <div class="lecture-item">
+                    <a href="{% url 'detail' user_lecture.lecture.id %}">
+                        {% if user_lecture.lecture.image %}
+                            <img src="{{ user_lecture.lecture.image.url }}" class="lecture-image" alt="강의 이미지">
+                        {% endif %}
+                        <div class="lecture-title">{{ user_lecture.lecture.title }}|{{ user_lecture.lecture.site }}</div>
+                    </a>
+                </div>
+                {% if forloop.counter|divisibleby:5 and not forloop.last %}
+                    <div style="width: 100%; clear: both;"></div>
+                {% endif %}
+            {% empty %}
+                현재는 수강중인강의가 없습니다
+            {% endfor %}
+        </div>
+    {% endif %}
+{% endif %}
+{% endblock content %}
+
+
+
+
+
+
+
+

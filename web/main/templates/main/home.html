@@ -1,0 +1,98 @@
+{% extends "main/base.html" %}
+{% load static %}
+{% block title %}
+메인 페이지
+{% endblock title %} 
+
+{% block extrahead %}
+<link rel="stylesheet" href="{% static 'main/css/homestyle.css' %}">
+{% endblock extrahead %} 
+
+{% block content %}
+{% if user.is_authenticated %}
+    <h2>환영합니다! {{ user.profile.nickname }} 님</h2>
+{% endif %}
+{% if recommended_lectures %}
+<h3>{{ user.profile.nickname }} 님을 위한 추천 강의</h3>
+
+    <div class="recommended-lectures">
+        {% for lecture in recommended_lectures %}
+            <div class="r_lecture-item">
+                <a href="{% url 'detail' lecture.id %}">
+                    {% if lecture.image %}
+                        <img src="{{ lecture.image.url }}" class="lecture-image" alt="강의 이미지">
+                    {% endif %}
+                    <div class="lecture-title">{{ lecture.title }}</div>
+                    <div class="lecture-site">From {{ lecture.site }}</div>
+                </a>
+            </div>
+            {% if forloop.counter|divisibleby:3 and not forloop.last %}
+                <div style="width: 100%; clear: both;"></div>
+            {% endif %}
+        {% endfor %}
+    </div>
+{% endif %}
+
+<h2>[전체 강의 목록]</h4>
+<h3>오늘은 무엇을 공부해볼까요?</h3>
+  <hr>
+
+<div class="lecture-container">
+  {% for lecture in page_obj %}
+
+    <div class="lecture-item">
+      <a href="{% url 'detail' lecture.id %}" onclick="checkLogin(event)">
+        {% if lecture.image %}
+          <img src="{{ lecture.image.url }}" class="lecture-image" alt="강의 이미지">
+        {% endif %}
+
+        <div class="lecture-title">{{ lecture.title }}</div>
+        <div class="lecture-site">From {{ lecture.site }}</div> 
+      </a>
+    </div>
+    {% if forloop.counter|divisibleby:5 and not forloop.last %}
+      <div style="width: 100%; clear: both;"></div> <!-- 5개 강의가 한 줄에 모두 표시되면 줄 바꿈 -->
+    {% endif %}
+  {% endfor %}
+</div>
+
+
+<span class="paginator">
+  {% if page_obj.has_previous %}
+  <a href="?page=1"><<</a>
+  |
+  <a href="?page={{page_obj.previous_page_number}}">< </a>
+  {% endif %}
+
+  <span class="paginator-current">{{ page_obj.number }}</span>
+  <span>/</span>
+  <span>{{ page_obj.paginator.num_pages }}</span>
+
+  {% if page_obj.has_next %}
+  <a href="?page={{page_obj.next_page_number}}">></a>
+  |
+  <a href="?page={{page_obj.paginator.num_pages}}">>></a>
+  {% endif %}
+</span>
+
+
+
+<script>
+  function checkLogin(event) {
+      // 로그인되어 있는지 확인
+      if (!{{ user.is_authenticated|lower }}) {
+          // 로그인되어 있지 않으면 기본 이벤트(강의 링크로 이동)를 중지
+          event.preventDefault();
+          // 경고창 표시
+          var confirmation = confirm("강의 세부 정보를 보려면 로그인이 필요합니다.");
+          // 확인 버튼을 클릭한 경우에만 로그인 페이지로 이동
+          if (confirmation) {
+              window.location.href = "{% url 'login' %}";
+          }
+      }
+  }
+</script>
+
+
+{% endblock content %}
+

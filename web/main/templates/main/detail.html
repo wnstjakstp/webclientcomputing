@@ -1,0 +1,85 @@
+{% extends "main/base.html" %}
+{% load static %}
+
+{% block title %}
+강의 상세 페이지
+{% endblock title %} 
+
+{% block extrahead %}
+<link rel="stylesheet" href="{% static 'main/css/detail.css' %}">
+{% endblock extrahead %} 
+
+{% block content %}
+
+<h2>강의 상세 정보</h2>
+<hr>
+<div class="btn">
+    {% if user_lecture %}
+    <a href="{% url 'user_lectures' %}">수강목록</a>
+    {% else %}
+    <a href="{% url 'home' %}">전체목록</a>
+    {%endif%}
+</div>
+<h3>{{ lecture.title }}  <span class="site"> from {{lecture.site}}</span></h2>
+
+<div class="container">
+    <div class="img">
+        {% if lecture.image %}
+        <img src="{{ lecture.image.url }}" alt="이미지" />
+        {% endif %}
+    </div>
+    <div class="text">
+        <div class="title">강의 소개</div>
+        <p>로렘 입숨(lorem ipsum; 줄여서 립숨, lipsum)은 출판이나 그래픽 디자인 분야에서 폰트,
+            타이포그래피, 레이아웃 같은 그래픽 요소나 시각적 연출을 보여줄 때 사용하는 표준 채우기 텍스트로,
+            최종 결과물에 들어가는 실제적인 문장 내용이 채워지기 전에 시각 디자인 프로젝트 모형의 채움 글로도 이용된다.
+            이런 용도로 사용할 때 로렘 입숨을 그리킹(greeking)이라고도 부르며,
+            때로 로렘 입숨은 공간만 차지하는 무언가를 지칭하는 용어로도 사용된다.</p>
+            <p>로렘 입숨(lorem ipsum; 줄여서 립숨, lipsum)은 출판이나 그래픽 디자인 분야에서 폰트,
+                타이포그래피, 레이아웃 같은 그래픽 요소나 시각적 연출을 보여줄 때 사용하는 표준 채우기 텍스트로,
+                최종 결과물에 들어가는 실제적인 문장 내용이 채워지기... </p>
+        <div class="btn">
+            {% if user_lecture %}
+                <a href="{% url 'learn'%}">수강하기</a>
+                <a href="{% url 'delete_my_lecture' user_lecture.id %}">담은 강의 삭제하기</a>
+            {% else %}
+                <a href="{% url 'add_lecture' lecture.id %}">강의담기</a>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<div class="lecture-info">
+    <h4>수강 사이트: {{ lecture.site }}</h4>
+    <h4>언어: {{ lecture.language }}</h4>
+    <h4>스킬: {{ lecture.skill }}</h4>
+    <h4>난이도: {{ lecture.level }}</h4>
+</div>
+
+<hr>
+
+<div class = "comment">
+    <div class = "review">후기 목록</div>
+    <div class="score"><p>평점: {{ average_rating|default:"평가 없음" }}</p></div>
+    {% if user_lecture %}
+    <a href="{% url 'new_comment' lecture.id %}">후기 작성하기</a>
+    {%endif%}
+    {% if comments %}
+    {% for comment in comments %}
+    <hr />
+    <div class="comment1">
+        <p><span class ="user">{{ comment.user.profile.nickname }} 님 </span> | {{comment.created_at}}</p>
+        <p class="rev"> 내용: {{comment.content}}</p>
+        <p class="rev">평점: {{comment.rating}}</p>
+        {% if user_lecture and request.user == comment.user %}
+        <!-- 현재 로그인한 사용자가 이 후기를 작성한 사용자와 동일한 경우에만 보여줍니다. -->
+        <a href="{% url 'delete_comment' comment.id %}">삭제</a>
+        <a href="{% url 'update_comment' comment.id %}">수정하기</a>
+        {% endif %}
+    </div>
+    {% endfor %}
+{% endif %}
+</div>
+
+{% endblock content %}
+

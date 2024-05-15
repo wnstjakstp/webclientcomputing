@@ -1,0 +1,164 @@
+body{
+    background-color: black;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* 폰트 스타일 조정 */
+
+}
+
+
+
+.container {
+    display: flex;
+    justify-content: center; /* 가운데 정렬을 수행합니다. */
+    border:3px solid white;
+    border-radius: 10px;
+    padding: 20px 50px;
+    margin: 0 330px;
+    margin-bottom:15px;
+    background-color: #ccc;
+    
+
+}
+
+
+.container > * {
+    max-width: 800px; /* 최대 너비를 설정합니다. */
+}
+
+.container img {
+    max-width: 100%; /* 이미지의 최대 너비를 설정합니다. */
+    height: auto; /* 이미지의 높이를 자동으로 조절합니다. */
+    margin-right: 50px;
+
+}
+h2 {
+    margin: 30px 0; /* h2와 내용 사이의 간격 추가 */
+    font-size:30px;
+    color:grey;
+
+}
+
+h3{
+    text-align: center;
+    font-size: 50px;
+    color:white;
+}
+h4{
+    font-size: 20px;
+    
+}
+
+.btn a {
+    display: inline-block; /* 인라인 요소를 블록 요소로 변환하여 너비와 높이 설정이 가능하도록 합니다. */
+    padding: 10px 20px; /* 버튼의 패딩을 설정합니다. */
+    margin-right: 10px; /* 버튼 간의 오른쪽 여백을 설정합니다. */
+    text-decoration: none; /* 링크 텍스트에 밑줄을 제거합니다. */
+    color: #fff; /* 버튼 텍스트의 색상을 설정합니다. */
+    background-color: green; /* 버튼 배경색을 설정합니다. */
+    border: none; /* 테두리를 없앱니다. */
+    border-radius: 5px; /* 버튼 모서리를 둥글게 만듭니다. */
+    font-size: 16px; /* 버튼 텍스트의 글꼴 크기를 설정합니다. */
+    cursor: pointer; /* 커서를 포인터로 변경하여 클릭 가능함을 나타냅니다. */
+}
+
+.btn a:hover {
+    background-color: darkgreen; /* 마우스 오버 시 버튼 배경색을 변경합니다. */
+}
+
+.lecture-info {
+
+    display :flex;
+    justify-content: space-between;
+    border: 3px solid white; /* 테두리를 설정합니다. */
+    padding: 15px 25px; /* 내부 여백을 설정합니다. */
+    border-radius: 10px; /* 모서리를 둥글게 만듭니다. */
+    background-color: #ccc; /* 배경색을 설정합니다. */
+    max-width: 800px;
+    margin: 15px auto; /* 가운데 정렬을 설정합니다. */
+
+}
+
+.lecture-info h3{
+    margin: 0 40px;
+}
+
+.site {
+    font-size: 25px;
+}
+
+
+.comment {
+    margin-bottom: 30px; /* 후기 목록과의 간격을 설정합니다. */
+    border: 3px solid black;
+    border-radius: 10px;
+    margin: 0 50px;
+    margin-top:30px;
+    padding: 20px 30px;
+    background-color: #ccc;
+}
+
+.comment a {
+    display: inline-block; 
+    padding: 10px 15px; 
+    margin-right: 10px; 
+    text-decoration: none; 
+    color: #fff; 
+    background-color: #03FF75; 
+    border: none; 
+    border-radius: 5px; 
+    font-size: 16px; 
+    cursor: pointer; 
+
+}
+
+.comment a:hover {
+    background-color: darkgreen; /* 마우스 오버 시 버튼 배경색을 변경합니다. */
+}
+
+.comment hr {
+    margin: 20px 0; /* 후기 사이의 간격을 설정합니다. */
+}
+hr {
+    border: none;
+    border-top: 2px solid white ; /* 변경하고자 하는 선 색상을 여기에 입력하세요 */
+
+}
+.comment1 {
+    margin: 10px 0; /* 후기 내용의 간격을 설정합니다. */
+    border: 2px solid #ccc;
+    padding:0  10px;
+    padding-bottom: 10px;
+    border-radius: 10px;
+    background-color:#f0f0f0;
+}
+
+
+.user {
+    font-weight: bold;
+    font-size:20px;
+}
+.rev{
+    font-weight: bold;
+    font-size:18px;
+}
+
+hr {
+    border: none;
+    border-top: 2px solid white ; /* 변경하고자 하는 선 색상을 여기에 입력하세요 */
+
+}
+
+.review{
+    font-weight: bold;
+    font-size: 30px;
+}
+.score{
+    font-weight: bold;
+    font-size:20px;
+}
+
+.title{
+    font-weight: bold;
+    font-size:30px;
+    margin-left: 20px;
+    margin-top: 10px;
+}

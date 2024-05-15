@@ -1,0 +1,113 @@
+body {
+    background-color: black;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* 폰트 스타일 조정 */
+}
+
+.selections-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around; /* 섹션 간의 간격을 균등하게 조정 */
+    padding: 0 10px; /* 컨테이너 양 옆에 여백 추가 */
+}
+
+h2, h3 {
+    color: grey;
+
+}
+
+h2 {
+    margin: 30px 0; /* h2와 내용 사이의 간격 추가 */
+    font-size:30px;
+}
+
+.name{
+    margin-top: 30px;
+    color:white;
+    text-align: center;
+    font-weight:bold;
+    font-size:30px;
+}
+
+h3 {
+    font-size: 25px;
+    font-weight: bold;
+
+    text-align:center; 
+    color:#03FF75;
+}
+
+.form-group {
+    flex: 1; /* 각 폼 그룹 섹션에 동일한 크기를 할당 */
+    border: 2px solid white; /* 경계선 스타일 설정 */
+    padding: 20px; /* 내부 여백 설정 */
+    margin: 10px; /* 바깥 여백 설정 */
+    border-radius: 10px;
+    color: white;
+    background-color: rgb(140, 140, 140);
+    margin-top:50px;
+}
+
+.form-group fieldset {
+    margin: 0; /* 필드셋의 마진을 제거하여 박스 안에서 꽉 차게 보이도록 함 */
+    padding: 0; /* 필드셋의 패딩을 제거 */
+    border: none; /* 필드셋의 경계선 제거 */
+}
+
+.form-check {
+    margin-bottom: 15px; /* 라디오 버튼 사이의 세로 간격 조정 */
+}
+
+fieldset legend {
+    font-weight: bold; /* 글자를 볼드체로 설정 */
+    font-size: 1.3em; /* 기본 글자 크기 대비 크기를 20% 증가 */
+    margin-bottom: 15px; /* 글자 사이의 세로 간격 조정 */
+    color: black; /* 레전드 글자색 변경 */
+}
+
+input[type="radio"] {
+    transform: scale(1.1); /* 기본 크기 대비 20% 증가 */
+}
+
+.form-check-label:hover {
+    cursor: pointer; /* 마우스 커서를 포인터로 변경 */
+    color: #03FF75; /* 글자 색상 변경, 원하는 색상으로 조정 가능 */
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 60px;
+}
+
+.btn {
+    background-color: #03FF75;
+    color: white;
+    padding: 18px 25px;
+    border: none;
+    cursor: pointer;
+    display: inline-flex;
+    justify-content: center;
+    border-radius: 5px;
+    font-size: 20px;
+    transition: background-color 0.3s, color 0.3s; /* 부드러운 색상 전환 효과 추가 */
+}
+
+.btn:hover {
+    background-color: #45a049;
+    color: #03FF75;
+}
+
+/* styles.css */
+
+.form-group {
+    font-size: 18px;
+}
+
+#id_nickname {
+    font-size: 22px;
+    height: 30px;
+    width: 220px;
+    border-radius: 10px;
+}
+

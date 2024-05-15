@@ -1,0 +1,75 @@
+{% extends "main/base.html" %}
+{% load static %}
+
+{% block title %}프로필 업데이트{% endblock title %}
+
+{% block extrahead %}
+<link rel="stylesheet" href="{% static 'users/css/recommend.css' %}">
+{% endblock extrahead %}
+
+{% block content %}
+{% if user.is_authenticated %}
+<h2>프로필 업데이트</h2>
+<hr>
+<div class="name">닉네임 수정</div>
+{% endif %}
+<div class="container">
+    <form method="post" action="{% url 'update_profile' %}">
+        {% csrf_token %}
+        {% if user.is_authenticated %}
+        <div class="form-group">
+            <label for="id_nickname">닉네임 수정</label> {{ form.nickname }}
+        </div>
+        {% endif %}
+
+        <h3>관심 분야를 선택해주세요</h3>
+        <div class="selections-container">
+            <div class="form-group">
+                <fieldset>
+                    <legend>Level</legend>
+                    {% for radio in form.level %}
+                    <div class="form-check">
+                        {{ radio.tag }}
+                        <label class="form-check-label" for="{{ radio.id_for_label }}">
+                            {{ radio.choice_label }}
+                        </label>
+                    </div>
+                    {% endfor %}
+                </fieldset>
+            </div>
+            <div class="form-group">
+                <fieldset>
+                    <legend>Skill</legend>
+                    {% for radio in form.skill %}
+                    <div class="form-check">
+                        {{ radio.tag }}
+                        <label class="form-check-label" for="{{ radio.id_for_label }}">
+                            {{ radio.choice_label }}
+                        </label>
+                    </div>
+                    {% endfor %}
+                </fieldset>
+            </div>
+            <div class="form-group">
+                <fieldset>
+                    <legend>Language</legend>
+                    {% for radio in form.language %}
+                    <div class="form-check">
+                        {{ radio.tag }}
+                        <label class="form-check-label" for="{{ radio.id_for_label }}">
+                            {{ radio.choice_label }}
+                        </label>
+                    </div>
+                    {% endfor %}
+                </fieldset>
+            </div>
+        </div>
+        <div class="button-container">
+            <button type="submit" class="btn">
+                {% if user.is_authenticated %} 프로필 업데이트 {% endif %}
+            </button>
+        </div>
+    </form>
+</div>
+
+{% endblock content %}

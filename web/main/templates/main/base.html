@@ -1,0 +1,67 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %} {% endblock title %}</title>
+    <link rel="stylesheet" href="{% static 'main/css/style.css' %}">
+    
+
+    
+    {% block extrahead %} {% endblock extrahead %}
+</head>
+
+
+<body>
+    <header class = "nav">
+        <h1>Link Co</h1>
+        <hr>
+        <nav>
+        <span><a href="{% url 'home' %}">홈</a></span>
+        <span>|</span>
+        <span><a href="{% url 'filter' %}">상세 검색</a></span>
+        <span>|</span>
+        <span><a href="{% url 'ai' %}" onclick="checkLogin(event)">AI 추천</a></span>
+        <span>|</span>
+        <span><a href="{% url 'update_profile' %}" onclick="checkLogin(event)">프로필 수정</a></span>
+        <span>|</span>
+        <span><a href="{% url 'user_lectures' %}" onclick="checkLogin(event)">나의 강의</a></span>
+        
+        
+        
+        <span class="auth-buttons">
+            {% if user.is_authenticated %}
+            <span class="nick">{{ user.profile.nickname }} 님</span>
+            <a href=" /users/logout">로그아웃</a>
+            {% else %}
+            <a href="users/login">로그인</a>
+            <a href="users/signup">회원가입</a>
+            {% endif %}
+        </span>
+        </nav>
+
+    </header>
+
+    
+{% block content %} {% endblock content %}
+
+<script>
+    function checkLogin(event) {
+        // 로그인되어 있는지 확인
+        if (!{{ user.is_authenticated|lower }}) {
+            // 로그인되어 있지 않으면 기본 이벤트(강의 링크로 이동)를 중지
+            event.preventDefault();
+            // 경고창 표시
+            var confirmation = confirm("로그인이 필요합니다.");
+            // 확인 버튼을 클릭한 경우에만 로그인 페이지로 이동
+            if (confirmation) {
+                window.location.href = "{% url 'login' %}";
+            }
+        }
+    }
+</script>
+  
+</body>
+</html>

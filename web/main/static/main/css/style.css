@@ -1,0 +1,73 @@
+body {
+    padding-top: 150px;;
+    font-family: Arial, sans-serif;
+
+}
+
+header.nav {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    position: fixed;
+    top: 0;
+    left:0;
+    border-radius: 0 0 10px 10px;
+    width: 100%;
+    z-index: 1000;
+
+
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 50px;
+}
+
+.nav h1{
+    font-size: 60px;
+    margin: 0;
+    color: #03FF75;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+}
+nav a:hover {
+    color:  #03FF75;/* 마우스를 올렸을 때 링크의 색상을 변경 */
+}
+
+nav span {
+    display: inline-block;
+
+}
+
+
+
+
+.auth-buttons a {
+    padding: 8px 15px;
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.auth-buttons a:hover {
+    background-color: #45a049;
+}
+
+.nick{
+    margin-left: 10px;
+    border: 2px solid;
+    padding: 3px 4px;
+}

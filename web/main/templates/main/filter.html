@@ -1,0 +1,60 @@
+{% extends "main/base.html" %}
+
+{% load static %}
+
+{% block extrahead %}
+<link rel="stylesheet" href="{% static 'main/css/filter.css' %}" />
+{% endblock extrahead %}
+
+{% block content %}
+<h2>상세 검색</h2>
+<hr>
+<div class="ask">원하는 강의를 검색해보세요!</div>
+<div class="form-container">
+  <form method="get" class="search-form">
+    {{ form.as_p }}
+    <button type="submit">검색</button>
+  </form>
+</div>
+
+{% if lectures %}
+<h3>검색 결과</h3>
+  <div class="lecture-container">
+    {% for lecture in lectures %}
+      <div class="lecture-item">
+        <a href="{% url 'detail' lecture.id  %}" onclick="checkLogin(event)">
+          {% if lecture.image %}
+            <img src="{{ lecture.image.url }}" class="lecture-image" alt="강의 이미지" />
+          {% endif %}
+          <div class="lecture-title">{{ lecture.title }}</div>
+          <div class="lecture-site">From {{ lecture.site }}</div>
+        </a>
+      </div>
+      {% if forloop.counter|divisibleby:5 and not forloop.last %}
+        <div style="clear: both"></div>
+      {% endif %}
+    {% endfor %}
+  </div>
+{% else %}
+  <div class="answer">검색 결과가 없습니다. 다시 검색해주세요.</div>
+{% endif %}
+
+
+<script>
+  function checkLogin(event) {
+      // 로그인되어 있는지 확인
+      if (!{{ user.is_authenticated|lower }}) {
+          // 로그인되어 있지 않으면 기본 이벤트(강의 링크로 이동)를 중지
+          event.preventDefault();
+          // 경고창 표시
+          var confirmation = confirm("강의 세부 정보를 보려면 로그인이 필요합니다.");
+          // 확인 버튼을 클릭한 경우에만 로그인 페이지로 이동
+          if (confirmation) {
+              window.location.href = "{% url 'login' %}";
+          }
+      }
+  }
+</script>
+
+
+{% endblock %}
